@@ -1,9 +1,11 @@
 import './page3.css';
 
-function App() {
+function Page3() {
   return (
-    <div className="App"></div>
+    <div className="Container-page3">
+      <img />
+    </div>
   );
 }
 
-export default App;
+export default Page3;
