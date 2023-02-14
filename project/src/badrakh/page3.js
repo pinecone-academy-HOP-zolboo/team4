@@ -35,27 +35,27 @@ function Page3() {
         <div className="grid1-page3" >
           <h1 className="footer-title-page3" >team.</h1>
           <div>
-            <img className="logo-page3" src={require("/Users/badrakh/Desktop/team4/project/src/img/Instagram.png")} />
+            <img className="logo-page3" src={require("../img/Instagram.png")} />
             <span className="social-page3" >instagram</span>
           </div>
           <div>
-            <img className="logo-page3" src={require("/Users/badrakh/Desktop/team4/project/src/img/Facebook.png")} />
+            <img className="logo-page3" src={require("../img/Facebook.png")} />
             <span className="social-page3" >facebook</span>
           </div>
           <div>
-            <img className="logo-page3" src={require("/Users/badrakh/Desktop/team4/project/src/img/Twitter.png")} />
+            <img className="logo-page3" src={require("../img/Twitter.png")} />
             <span className="social-page3" >twitter</span>
           </div>
           <div>
-            <img className="logo-page3" src={require("/Users/badrakh/Desktop/team4/project/src/img/Instagram.png")} />
+            <img className="logo-page3" src={require("../img/Instagram.png")} />
             <span className="social-page3" >instagram</span>
           </div>
           <div>
-            <img className="logo-page3" src={require("/Users/badrakh/Desktop/team4/project/src/img/Facebook.png")} />
+            <img className="logo-page3" src={require("../img/Facebook.png")} />
             <span className="social-page3" >facebook</span>
           </div>
           <div>
-            <img className="logo-page3" src={require("/Users/badrakh/Desktop/team4/project/src/img/Twitter.png")} />
+            <img className="logo-page3" src={require("../img/Twitter.png")} />
             <span className="social-page3" >twitter</span>
           </div>
         </div>
@@ -77,14 +77,14 @@ const Cards = () => {
   <div className="card-container-page3" >
   <div className="card-page3" >
     <div className="box1-page3" >
-      <img className="image-page3" src={require("/Users/badrakh/Desktop/team4/project/src/img/types-of-meetings.webp")} />
+      <img className="image-page3" src={require("../img/types-of-meetings.webp")} />
       </div>
     <div className="box2-page3" >
       <h2 className="ux-page3" >The Emotional Toll of Being in UX</h2>
       <p className="deep-page3" >There are times when our work impacts us deeply--sometimes in ways we neither acknowledge nor understand.</p>
     </div>
     <div className="box3-page3" >
-      <img className="pfp-page3" src={require('/Users/badrakh/Desktop/team4/project/src/img/indoor-shot-beautiful-happy-african-american-woman-smiling-cheerfully-keeping-her-arms-folded-relaxing-indoors-after-morning-lectures-university_273609-1270.avif')} />
+      <img className="pfp-page3" src={require('../img/indoor-shot-beautiful-happy-african-american-woman-smiling-cheerfully-keeping-her-arms-folded-relaxing-indoors-after-morning-lectures-university_273609-1270.avif')} />
       <p className="username-page3" >Wade Warren    |    2nd January,2022</p>
     </div>
   </div>
