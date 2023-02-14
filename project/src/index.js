@@ -1,17 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import Page3 from './badrakh/page3'
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import Page3 from "./badrakh/page3";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    
-  {/* Change it to ur page name to see ur project*/}
-    <Page3 /> 
-
+    {/* Change it to ur page name to see ur project*/}
+    <Page3 />
   </React.StrictMode>
 );
 
