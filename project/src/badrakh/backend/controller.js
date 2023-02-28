@@ -25,7 +25,6 @@ exports.createNews = async (request, response, next) => {
 exports.getNews = async (request, response, next) => {
     let { pagination } = request.query;
     try {
-        console.log(pagination)
         const news = await News.find().limit(pagination)
         response
             .status(200)
