@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import Page3 from "./badrakh/page3";
 import Information  from "./pages/post-page-p2";
+import Page1 from "./tuguldur/page1";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
