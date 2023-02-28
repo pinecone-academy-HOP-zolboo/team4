@@ -1,17 +1,47 @@
 import './page3.css';
+import axios from "axios"
+import React, { useState, useEffect } from 'react';
 
 function Page3() {
+  const [pagination, setPagination] = useState(6)
+  const [data, setData] = useState([])
+  const instance = axios.create({
+    baseURL: 'http://localhost:8000',
+  })
+  const getNews = async () => {
+    try {
+      console.log(sessionStorage.getItem('uid'))
+      const res = await instance.get("/", { params: { pagination: sessionStorage.getItem("uid")} })
+      setData(res.data.data)
+      console.log(data)
+    } catch (error) {
+      alert("error")
+    }
+  }
+  const set = () => {
+    setPagination(pagination + 3)
+    sessionStorage.setItem("uid", pagination)
+    console.log(pagination)
+  }
+
+  useEffect(() => {
+    getNews();
+    sessionStorage.setItem("uid", 3)
+  }, [])
+
+
+
   return (
     <div className="Container-page3">
       <div className='header-page3'>
         <h2 className="title-page3" >team.</h2>
         <div className="link-container-page3">
-      <p className="links-page3" >Products</p>
-      <p className="links-page3" >Services</p>
-      <p className="links-page3" >Contact</p>
-      <p className="links-page3" >Log in</p>
-      <button className="access-button-page3" >Get Access</button>
-      </div>
+          <p className="links-page3" >Products</p>
+          <p className="links-page3" >Services</p>
+          <p className="links-page3" >Contact</p>
+          <p className="links-page3" >Log in</p>
+          <button className="access-button-page3" >Get Access</button>
+        </div>
       </div>
       <div className="body-page3" >
         <div className="body-title-page3" >
@@ -19,17 +49,11 @@ function Page3() {
           <p className="para-page3" >Our latest updates and blogs about managing your team</p>
         </div>
         <div className="cardud-page3" >
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
+          {
+            data.map((cur) => <Cards post={cur.post} title={cur.title} desc={cur.desc} username={cur.username} pfp={cur.pfp}></Cards>)
+          }
         </div>
-        <button className="point-button" >Next</button>
+        <button className="point-button" onClick={set} >Show more</button>
       </div>
       <div className="footer-page3" >
         <div className="grid1-page3" >
@@ -65,45 +89,45 @@ function Page3() {
         <div className="grid5-page3" >
           <h2 className="sub-page3" >Subscribe to our newsletter</h2>
           <input placeholder="Email" className="input-page3" />
-          <button className="add-page3" >Add</button>
+          <button className="add-page3">Add</button>
         </div>
       </div>
     </div>
   );
 }
 
-const Cards = () => {
+const Cards = ({ post, title, desc, username, pfp }) => {
   return (
-  <div className="card-container-page3" >
-  <div className="card-page3" >
-    <div className="box1-page3" >
-      <img className="image-page3" src={require("/Users/badrakh/Desktop/team4/project/src/img/types-of-meetings.webp")} />
+    <div className="card-container-page3" >
+      <div className="card-page3" >
+        <div className="box1-page3" >
+          <img className="image-page3" src={post} />
+        </div>
+        <div className="box2-page3" >
+          <h2 className="ux-page3" >{title}</h2>
+          <p className="deep-page3" >{desc}</p>
+        </div>
+        <div className="box3-page3" >
+          <img className="pfp-page3" src={pfp} />
+          <p className="username-page3" >{username}</p>
+        </div>
       </div>
-    <div className="box2-page3" >
-      <h2 className="ux-page3" >The Emotional Toll of Being in UX</h2>
-      <p className="deep-page3" >There are times when our work impacts us deeply--sometimes in ways we neither acknowledge nor understand.</p>
     </div>
-    <div className="box3-page3" >
-      <img className="pfp-page3" src={require('/Users/badrakh/Desktop/team4/project/src/img/indoor-shot-beautiful-happy-african-american-woman-smiling-cheerfully-keeping-her-arms-folded-relaxing-indoors-after-morning-lectures-university_273609-1270.avif')} />
-      <p className="username-page3" >Wade Warren    |    2nd January,2022</p>
-    </div>
-  </div>
-  </div>
   )
 }
 
 const Social = ({ className, name, name1, name2, name3, name4, name5, name6 }) => {
   return (
     <div className={className} >
-    <span className="jobs-title-page3" >{name}</span>
-    <span className="jobs-page3" >{name1}</span>
-    <span className="jobs-page3" >{name2}</span>
-    <span className="jobs-page3" >{name3}</span>
-    <span className="jobs-page3" >{name4}</span>
-    <span className="jobs-page3" >{name5}</span>
-    <span className="jobs-page3" >{name6}</span>
-  </div>
-)
+      <span className="jobs-title-page3" >{name}</span>
+      <span className="jobs-page3" >{name1}</span>
+      <span className="jobs-page3" >{name2}</span>
+      <span className="jobs-page3" >{name3}</span>
+      <span className="jobs-page3" >{name4}</span>
+      <span className="jobs-page3" >{name5}</span>
+      <span className="jobs-page3" >{name6}</span>
+    </div>
+  )
 }
 
 export default Page3;
