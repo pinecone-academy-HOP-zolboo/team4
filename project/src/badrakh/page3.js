@@ -3,30 +3,46 @@ import axios from "axios"
 import React, { useState, useEffect } from 'react';
 
 function Page3() {
-  const [pagination, setPagination] = useState(6)
+  const [pagination, setPagination] = useState(3)
   const [data, setData] = useState([])
   const instance = axios.create({
     baseURL: 'http://localhost:8000',
   })
   const getNews = async () => {
     try {
-      console.log(sessionStorage.getItem('uid'))
-      const res = await instance.get("/", { params: { pagination: sessionStorage.getItem("uid")} })
+      const res = await instance.get(`/?pagination=${pagination}`)
       setData(res.data.data)
       console.log(data)
     } catch (error) {
       alert("error")
     }
   }
+  const last = data.length
+  console.log(last)
   const set = () => {
-    setPagination(pagination + 3)
-    sessionStorage.setItem("uid", pagination)
-    console.log(pagination)
+    if (pagination <= last){
+      setPagination(pagination + 3)
+    }
+    else {
+      alert("no more news to show :)")
+    }
   }
+  
+  const less = () => {
+    if (pagination >= 4) {
+    setPagination(pagination - 3)
+  } else {
+    alert("there is have to be atleast 3 news on the site :)")
+  }
+}
 
   useEffect(() => {
     getNews();
-    sessionStorage.setItem("uid", 3)
+  }, [pagination])
+
+  useEffect(() => {
+    setPagination(3)
+    console.log(pagination)
   }, [])
 
 
@@ -54,6 +70,7 @@ function Page3() {
           }
         </div>
         <button className="point-button" onClick={set} >Show more</button>
+        <button className="point-button" onClick={less} >Show less</button>
       </div>
       <div className="footer-page3" >
         <div className="grid1-page3" >
